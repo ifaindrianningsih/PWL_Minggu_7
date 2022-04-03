@@ -16,8 +16,8 @@ class MahasiswaController extends Controller
     public function index()
     {
         //fungsi eloquent menampilkan data menggunakan pagination
-        $mahasiswa = $mahasiswa = DB::table('mahasiswa')->get(); // Mengambil semua isi tabel
-        $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(6);
+        $mahasiswa = $mahasiswa = DB::table('mahasiswa')->paginate(3); // Mengambil semua isi tabel
+        $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(3);
         return view('mahasiswa.index', compact('mahasiswa'));
         with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -42,8 +42,11 @@ class MahasiswaController extends Controller
     {
         //melakukan validasi data
         $request->validate([
+        'email' => 'required',
         'nim' => 'required',
         'nama' => 'required',
+        'tgl_lahir' => 'required',
+        'alamat' => 'required',
         'kelas' => 'required',
         'jurusan' => 'required',
         ]);
@@ -92,10 +95,13 @@ class MahasiswaController extends Controller
     {
         //melakukan validasi data
         $validate=$request->validate([
-        'nim' => 'required',
-        'nama' => 'required',
-        'kelas' => 'required',
-        'jurusan' => 'required',
+            'email' => 'required',
+            'nim' => 'required',
+            'nama' => 'required',
+            'tgl_lahir' => 'required',
+            'alamat' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
         ]);
 
         //fungsi eloquent untuk mengupdate data inputan kita
@@ -120,4 +126,13 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.index')
         -> with('success', 'Mahasiswa Berhasil Dihapus');
     }
+
+    public function cari(Request $request)
+	{
+		$keyword = $request->cari;
+        $mahasiswa = Mahasiswa::where('nama', 'like', "%" . $keyword . "%")->paginate(3);
+        return view('mahasiswa.index', compact('mahasiswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+
 }

@@ -24,12 +24,24 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" id="email" value="{{ $Mahasiswa->email }}" aria-describedby="email" >
+                        </div>
+                        <div class="form-group">
                             <label for="nim">Nim</label>
                             <input type="text" name="nim" class="form-control" id="nim" value="{{ $Mahasiswa->nim }}" aria-describedby="nim" >
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" name="nama" class="form-control" id="nama" value="{{ $Mahasiswa->nama }}" aria-describedby="nama" >
+                        </div>
+                        <div class="form-group">
+                            <label for="tgl_lahir">Tanggal lahir</label>
+                            <input type="text" name="tgl_lahir" class="form-control" id="tgl_lahir" value="{{ $Mahasiswa->tgl_lahir }}" aria-describedby="tgl_lahir" >
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" name="alamat" class="form-control" id="alamat" value="{{ $Mahasiswa->alamat }}" aria-describedby="alamat" >
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>

@@ -23,12 +23,24 @@
                     <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
                         @csrf
                         <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" id="email" aria-describedby="email" >
+                        </div>
+                        <div class="form-group">
                             <label for="nim">Nim</label>
                             <input type="text" name="nim" class="form-control" id="nim" aria-describedby="nim" >
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="nama" name="nama" class="form-control" id="nama" ariadescribedby="nama" >
+                        </div>
+                        <div class="form-group">
+                            <label for="tgl_lahir">Tanggal lahir</label>
+                            <input type="text" name="tgl_lahir" class="form-control" id="tgl_lahir" aria-describedby="tgl_lahir" >
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" name="alamat" class="form-control" id="alamat" aria-describedby="alamat" >
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
