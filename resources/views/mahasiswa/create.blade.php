@@ -23,32 +23,36 @@
                     <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" class="form-control" id="email" aria-describedby="email" >
+                            <label for="Email">Email</label>
+                            <input type="text" name="Email" class="form-control" id="Email" aria-describedby="Email" >
                         </div>
                         <div class="form-group">
-                            <label for="nim">Nim</label>
-                            <input type="text" name="nim" class="form-control" id="nim" aria-describedby="nim" >
+                            <label for="Nim">Nim</label>
+                            <input type="text" name="Nim" class="form-control" id="Nim" aria-describedby="Nim" >
                         </div>
                         <div class="form-group">
-                            <label for="nama">Nama</label>
-                            <input type="nama" name="nama" class="form-control" id="nama" ariadescribedby="nama" >
+                            <label for="Nama">Nama</label>
+                            <input type="Nama" name="Nama" class="form-control" id="Nama" ariadescribedby="Nama" >
                         </div>
                         <div class="form-group">
-                            <label for="tgl_lahir">Tanggal lahir</label>
-                            <input type="text" name="tgl_lahir" class="form-control" id="tgl_lahir" aria-describedby="tgl_lahir" >
+                            <label for="Tanggal_lahir">Tanggal lahir</label>
+                            <input type="Tanggal_lahir" name="Tanggal_lahir" class="form-control" id="Tanggal_lahir" aria-describedby="Tanggal_lahir" >
                         </div>
                         <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" name="alamat" class="form-control" id="alamat" aria-describedby="alamat" >
+                            <label for="Alamat">Alamat</label>
+                            <input type="Alamat" name="Alamat" class="form-control" id="Alamat" aria-describedby="Alamat" >
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"> 
                             <label for="kelas">Kelas</label>
-                            <input type="kelas" name="kelas" class="form-control" id="kelas" ariadescribedby="password" >
+                            <select class="form-control" name="kelas" id="kelas">
+                                @foreach($kelas as $kls)
+                                <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="jurusan">Jurusan</label>
-                            <input type="jurusan" name="jurusan" class="form-control" id="jurusan" ariadescribedby="jurusan" >
+                            <label for="Jurusan">Jurusan</label>
+                            <input type="Jurusan" name="Jurusan" class="form-control" id="Jurusan" ariadescribedby="Jurusan" >
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
