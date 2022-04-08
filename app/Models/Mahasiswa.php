@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Mahasiswa as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Mahasiswa; //Model Eloquent
+use App\Models\Mahasiswa;
+use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah; //Model Eloquent
 
 class Mahasiswa extends Model//Definisi Model
 {
@@ -24,12 +26,16 @@ class Mahasiswa extends Model//Definisi Model
     'Nama',
     'Tanggal_lahir',
     'Alamat',
-    'Kelas_Id',
+    'kelas_id',
     'Jurusan',
     ];
 
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function matakuliah(){
+        return $this->belongsToMany(MataKuliah::class,'mahasiswa_matakuliah','mahasiswa_id','matakuliah_id')->withPivot('nilai');
     }
 }

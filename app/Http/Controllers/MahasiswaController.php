@@ -169,8 +169,13 @@ class MahasiswaController extends Controller
     public function cari(Request $request)
 	{
 		$keyword = $request->cari;
-        $mahasiswa = Mahasiswa::where('nama', 'like', "%" . $keyword . "%")->paginate(3);
-        return view('mahasiswa.index', compact('mahasiswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $paginate = Mahasiswa::where('nama', 'like', "%" . $keyword . "%")->paginate(3);
+        return view('mahasiswa.index', compact('paginate'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function nilai($nim){
+        $nilai = Mahasiswa::with('kelas', 'matakuliah')->find($nim);
+        return view('mahasiswa.nilai',compact('nilai'));
     }
 
 
